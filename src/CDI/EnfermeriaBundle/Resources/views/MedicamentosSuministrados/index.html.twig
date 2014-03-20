@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block _body %}  <h2>Medicamentos Suministrados</h2> {% endblock %}
+
+{% block body %}
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Medicamento</th>
+                <th>Tipo de Medicamento</th>
+                <th>Cantidad Suministrada</th>
+                <th>Via administracion</th>
+                <th>Fecha</th>
+                
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('medicamentossuministrados_show', { 'id': entity.id }) }}">{{ loop.index  }}</a></td>
+                <td>{{ entity.medicamento }}</td>
+                <td>{{ entity.medicamento.tipoMedicamento }}</td>
+                <td>{{ entity.cantidad }}</td>
+                <td>{{ entity.viaAdministracion | title }}</td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('medicamentossuministrados_show', { 'id': entity.id }) }}">Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('medicamentossuministrados_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('medicamentossuministrados_new') }}">
+                Crear nueva entidad
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

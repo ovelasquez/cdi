@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+
+{% block _body %}  <h2>Usuarios</h2> {% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                 
+                <th>#</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Cedula</th>
+                <th>Usuario</th>
+                <th>Email</th>
+                <th>Estatus</th>
+                <th>Acciones</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+        
+
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('usuarios_show', { 'id': entity.id }) }}">{{ loop.index }}</a></td>
+                <td>{{ entity.datos.nombres | title  }}</td>
+                <td>{{ entity.datos.apellidos | title }}</td>
+                <td>{{ entity.datos.cedula | title }}</td>
+                <td>{{ entity.username}}</td>
+                <td>{{ entity.email}}</td>
+                <td>{% if entity.isActive==1 %}{{ "Activo" }}{% else %}{{ "Inactivo" }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('usuarios_show', { 'id': entity.id }) }}">Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('usuarios_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('usuarios_new') }}">
+                Crear una nueva Entidad
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

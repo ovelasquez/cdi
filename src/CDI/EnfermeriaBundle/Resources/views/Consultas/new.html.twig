@@ -1,0 +1,73 @@
+{% extends '::base.html.twig' %}
+
+ {% block stylesheets %}
+    {{parent()}}
+    <!-- Bootstrap datepicker core CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/enfermeria/css/datepicker.css')}}"
+{% endblock %}
+
+{% block _body %}  <h2>Consultas</h2> {% endblock %}
+{% block body %}
+   
+    <h2>Registro</h2>
+    <br>
+
+{{ form_start(form) }}
+{{ form_errors(form) }}
+    
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              Datos del Paciente
+            </a>
+          </h4>
+        </div>
+            
+        <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+
+            <div class="form-group">       
+            {{ form_label(form.paciente) }}
+            {{ form_errors(form.paciente) }}
+                <div class="col-lg-4">
+                    {{ form_widget(form.paciente) }}
+                </div>
+            </div>
+
+            <div class="form-group">       
+            {{ form_label(form.egreso) }}
+            {{ form_errors(form.egreso) }}
+                <div class="col-lg-4">
+                    {{ form_widget(form.egreso) }}
+                </div>
+            </div>
+
+            <div class="btn-group">       
+            {{ form_label(form.charla) }}
+            {{ form_errors(form.charla) }}
+                <div class="col-lg-4">
+                    {{ form_widget(form.charla) }}
+                </div>
+            </div>
+
+              
+
+
+          </div>
+        </div>
+    </div>
+      
+          
+  </div>
+    {{ form_end(form) }} 
+    
+    
+<ul class="table">
+    <li>
+        <a href="{{ path('consultas') }}"> Regresar a la lista </a>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends '::base.html.twig' %}
+
+ {% block stylesheets %}
+    {{parent()}}
+    <!-- Bootstrap datepicker core CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/enfermeria/css/datepicker.css')}}"
+{% endblock %}
+
+{% block _body %}  <h2>Insumos</h2> {% endblock %}
+{% block body %}
+   
+    <h2>Registro</h2>
+    <br>
+       
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+ 
+    <div class="form-group">       
+        {{ form_label(form.nombre) }}
+        {{ form_errors(form.nombre) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.nombre) }}
+            </div>
+    </div>
+       
+        
+     <div class="form-group">       
+        {{ form_label(form.stock) }}
+        {{ form_errors(form.stock) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.stock) }}
+            </div>
+    </div>
+    
+        
+     <div class="form-group">       
+        {{ form_label(form.disponible) }}
+        {{ form_errors(form.disponible) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.disponible) }}
+            </div>
+    </div>
+    
+           
+     <div class="form-group">       
+        {{ form_label(form.tipoInsumo) }}
+        {{ form_errors(form.tipoInsumo) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.tipoInsumo) }}
+            </div>
+    </div>
+     
+           
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-4">
+          <button type="submit" class="btn btn-primary">Registar</button>
+        </div>
+  </div>
+      
+{{ form_end(form) }} 
+    
+
+        <ul class="table">
+    <li>
+        <a href="{{ path('insumos') }}">
+            Regresar a la lista
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+    {% block javascripts %}
+
+
+ 
+{% endblock %}

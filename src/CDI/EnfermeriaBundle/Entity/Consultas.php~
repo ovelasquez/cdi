@@ -1,0 +1,67 @@
+<?php
+
+namespace CDI\EnfermeriaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Consultas
+ *
+ * @ORM\Table(name="consultas")
+ * @ORM\Entity
+ */
+class Consultas
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="consultas_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="charla", type="boolean", nullable=true)
+     */
+    private $charla;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="datetime", nullable=true)
+     */
+    private $fecha;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="egreso", type="boolean", nullable=true)
+     */
+    private $egreso;
+
+    /**
+     * @var \Usuarios
+     *
+     * @ORM\ManyToOne(targetEntity="Usuarios")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuarios_id", referencedColumnName="id")
+     * })
+     */
+    private $usuarios;
+
+    /**
+     * @var \Pacientes
+     *
+     * @ORM\ManyToOne(targetEntity="Pacientes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="paciente_id", referencedColumnName="id")
+     * })
+     */
+    private $paciente;
+
+
+}

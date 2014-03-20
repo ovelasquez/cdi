@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        
+        <title>{% block title %}Bienvenidos Mi Amor!!!{% endblock %}</title>
+        
+        {% block stylesheets %}
+
+            <!-- Bootstrap core CSS -->
+            <link rel="stylesheet" href="{{ asset('bundles/enfermeria/css/bootstrap.css')}}"
+            <!-- Custom styles for this template -->
+            <link rel="stylesheet" href="{{asset('bundles/enfermeria/css/jumbotron.css')}}"
+            
+        {% endblock %}
+        
+        
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    
+    
+    <body>
+      {% block bootstrap %}
+      <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Enfermería CDI-UBV</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{{ path('portada') }}">Home</a></li>
+            <li><a href="{{ path('verificar') }}">Verificar</a></li>
+            <li><a href="{{ path('pacientes') }}">Pacientes</a></li>
+            <li><a href="{{ path('consultas') }}">Consultas</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuración <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="{{ path('personal') }}">Personal</a></li>
+                <li><a href="{{ path('pfg') }}">Programas de Formación de Grado</a></li>
+                <li><a href="{{ path('medicamentos') }}">Medicamentos</a></li>
+                <li><a href="{{ path('insumos') }}">Insumos</a></li>
+                 <li><a href="{{ path('especialidades') }}">Especialidades</a></li>
+                <li><a href="{{ path('usuarios') }}">Usuarios</a></li>
+                <li><a href="{{ path('roles') }}">Roles</a></li>
+                <li><a href="{{ path('insumossuministrados') }}">Insumos suministrados</a></li>
+              </ul>
+            </li>
+            <ul class="nav navbar-nav navbar-right">
+            
+             <li class="active"><a href="#"> Bienvenido Sr. {{ app.user.datos.getNombres }} {{ app.user.datos.getApellidos}}  </a></li>
+            <li><a href="{{ path('logout') }}">Cerrar sesión</a></li>
+           
+          </ul>
+
+           
+          </ul>
+          
+         
+        </div><!--/.navbar-collapse -->
+
+          </div>
+              
+    </div>    
+        {% endblock %}
+            
+        {% block _container %}
+            <div class="jumbotron">          
+                {% block _body %}{% endblock %}
+             </div>
+        {% endblock %}
+            
+            
+            {% block container %}
+          <div class="container">
+                {% block body %}{% endblock %}
+               
+                <hr>
+                <footer> <p>&copy; Universidad Bolivariana de Venezuela - 2013</p></footer>
+             </div>
+        {% endblock %}
+            
+            
+        {% block javascripts %}
+            <script src="{{ asset('bundles/enfermeria/js/jquery-1.10.2.js')}}"></script>
+            <script src="{{ asset('bundles/enfermeria/js/bootstrap.js')}}"></script>
+        {% endblock %}
+    </body>
+</html>

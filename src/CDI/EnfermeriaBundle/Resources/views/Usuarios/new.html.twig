@@ -1,0 +1,127 @@
+{% extends '::base.html.twig' %}
+
+ {% block stylesheets %}
+    {{parent()}}
+    <!-- Bootstrap datepicker core CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/enfermeria/css/datepicker.css')}}"
+{% endblock %}
+
+{% block _body %}  <h2>Usuarios</h2> {% endblock %}
+{% block body %}
+   
+    <h2>Registro</h2>
+    <br>
+
+ {{ form_start(form) }}
+ {{ form_errors(form) }}
+ 
+   
+    <div class="form-group">       
+        {{ form_label(form.datos.nombres) }}
+        {{ form_errors(form.datos.nombres) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.datos.nombres) }}
+            </div>
+    </div>
+    
+     <div class="form-group">       
+        {{ form_label(form.datos.apellidos) }}
+        {{ form_errors(form.datos.apellidos) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.datos.apellidos) }}
+            </div>
+    </div>
+    
+    
+    <div class="form-group">       
+        {{ form_label(form.datos.cedula) }}
+        {{ form_errors(form.datos.cedula) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.datos.cedula) }}
+            </div>
+    </div>
+    
+    
+     <div class="form-group">       
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.email) }}
+            </div>
+    </div>
+    
+    
+    
+     <div class="form-group">       
+        {{ form_label(form.username) }}
+        {{ form_errors(form.username) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.username) }}
+            </div>
+    </div>
+    
+     <div class="form-group">       
+        {{ form_label(form.password) }}
+        {{ form_errors(form.password) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.password) }}
+            </div>
+    </div>
+    
+    
+     <div class="form-group">       
+        {{ form_label(form.pregunta) }}
+        {{ form_errors(form.pregunta) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.pregunta) }}
+            </div>
+    </div>
+    
+    
+     <div class="form-group">       
+        {{ form_label(form.respuesta) }}
+        {{ form_errors(form.respuesta) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.respuesta) }}
+            </div>
+    </div>
+    
+      <div class="form-group">       
+        {{ form_label(form.groups) }} 
+      </div>
+        {{ form_errors(form.groups) }}
+           <div >
+                {{ form_widget(form.groups) }}
+            </div>
+   
+      
+     <div class="form-group">       
+        {{ form_label(form.isActive) }} 
+         </div>
+        {{ form_errors(form.isActive) }}
+            <div >
+                {{ form_widget(form.isActive) }}
+            </div>
+   
+    
+    
+    
+   </br>
+           
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-4">
+          <button type="submit" class="btn btn-primary">Registar</button>
+        </div>
+  </div>
+      
+{{ form_end(form) }} 
+
+        <ul class="table">
+    <li>
+        <a href="{{ path('usuarios') }}">
+            Regresar a la lista
+        </a>
+    </li>
+</ul>
+{% endblock %}
+   

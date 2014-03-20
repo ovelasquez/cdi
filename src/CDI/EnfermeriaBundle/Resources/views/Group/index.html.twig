@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+
+{% block _body %}  <h2>Roles</h2> {% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('roles_show', { 'id': entity.id }) }}">{{ loop.index }}</a></td>
+                <td>{{ entity.name | title  }}</td>
+                <td>{{ entity.role | title  }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('roles_show', { 'id': entity.id }) }}">Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('roles_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('roles_new') }}">
+                Crear una nueva Entidad
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

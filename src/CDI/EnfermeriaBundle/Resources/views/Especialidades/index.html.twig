@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+
+{% block _body %}  <h2>Especialidades</h2> {% endblock %}
+
+{% block body %}
+
+   <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('especialidades_show', { 'id': entity.id }) }}">{{ loop.index  }}</a></td>
+                <td>{{ entity.nombre | title }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('especialidades_show', { 'id': entity.id }) }}">Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('especialidades_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('especialidades_new') }}">
+                Crear nueva entidad
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

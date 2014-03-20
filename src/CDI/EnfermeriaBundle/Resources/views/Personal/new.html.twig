@@ -1,0 +1,142 @@
+{% extends '::base.html.twig' %}
+
+ {% block stylesheets %}
+    {{parent()}}
+    <!-- Bootstrap datepicker core CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/enfermeria/css/datepicker.css')}}"
+{% endblock %}
+
+{% block _body %}  <h2>Personal</h2> {% endblock %}
+{% block body %}
+   
+    <h2>Registro</h2>
+    <br>
+     
+ {{ form_start(form) }}
+ {{ form_errors(form) }}
+ 
+   
+    <div class="form-group">       
+        {{ form_label(form.datos.nombres) }}
+        {{ form_errors(form.datos.nombres) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.datos.nombres) }}
+            </div>
+    </div>
+    
+     <div class="form-group">       
+        {{ form_label(form.datos.apellidos) }}
+        {{ form_errors(form.datos.apellidos) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.datos.apellidos) }}
+            </div>
+    </div>
+    
+    
+    <div class="form-group">       
+        {{ form_label(form.datos.cedula) }}
+        {{ form_errors(form.datos.cedula) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.datos.cedula) }}
+            </div>
+    </div>
+    
+ 
+        
+    <div class="form-group">       
+        {{ form_label(form.procedencia) }}
+        {{ form_errors(form.procedencia) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.procedencia) }}
+            </div>
+    </div>
+    
+    
+     <div class="form-group">       
+        {{ form_label(form.tipo) }}
+        {{ form_errors(form.tipo) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.tipo) }}
+            </div>
+    </div>
+
+    
+    <div class="form-group">       
+        {{ form_label(form.sas) }}
+        {{ form_errors(form.sas) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.sas) }}
+            </div>
+    </div>
+    
+     <div class="form-group">       
+        {{ form_label(form.especialidad) }}
+        {{ form_errors(form.especialidad) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.especialidad) }}
+            </div>
+    </div>
+     
+ 
+           
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-4">
+          <button type="submit" class="btn btn-primary">Registar</button>
+        </div>
+  </div>
+      
+{{ form_end(form) }} 
+    
+    <ul class="table">
+    <li>
+        <a href="{{ path('personal') }}">Regresar a la lista</a>
+    </li>
+    
+</ul>
+{% endblock %}
+    
+
+    {% block javascripts %}
+    {{parent()}}
+<script>
+    
+function displayVals() {
+  var tipo = $( "#cdi_enfermeriabundle_personal_tipo" ).val();
+  var sas = $( "#cdi_enfermeriabundle_personal_sas" ).val();
+  var especialidad = $( "#cdi_enfermeriabundle_personal_especialidad" ).val();
+    
+  if (tipo=="doctor") {
+            $(".sas").css("display", "block"); // Mostrar el div sas
+            $("#cdi_enfermeriabundle_personal_sas").removeAttr("disabled"); //  Activo sas 
+            $(".especialidad").css("display", "block"); // Mostrar el div sas
+            $("#cdi_enfermeriabundle_personal_especialidad").removeAttr("disabled"); //  Activo especialidad 
+  }
+  else {
+      $(".sas").css("display", "none"); // Oculta el div sas
+      $('#cdi_enfermeriabundle_personal_sas').val(''); // el select de tipo lo inicializa
+      $("#cdi_enfermeriabundle_personal_sas").prop('disabled', 'disabled'); // desabilita el select sas
+      
+      
+      $(".especialidad").css("display", "none"); // Oculta el div especialidad
+      $('#cdi_enfermeriabundle_personal_especialidad').val(''); // el select de especialidad y lo inicializa
+      sas="";
+      $("#cdi_enfermeriabundle_personal_especialidad").prop('disabled', 'disabled'); // desabilita el select especialidad
+  }
+}
+ 
+$( "select" ).change( displayVals );
+
+$(document).ready(function(){
+    $("#cdi_enfermeriabundle_personal_sas").parent().parent().wrapAll('<div class="sas">');
+    $("#cdi_enfermeriabundle_personal_especialidad").parent().parent().wrapAll('<div class="especialidad">');
+    $(".sas").css("display", "none"); // Oculta el div sas
+    $(".especialidad").css("display", "none"); // Oculta el div especialidad  
+
+     
+});
+
+
+</script>
+ 
+{% endblock %}
+

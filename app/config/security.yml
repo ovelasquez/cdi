@@ -1,0 +1,59 @@
+security:
+    encoders:
+        CDI\EnfermeriaBundle\Entity\Usuarios:
+            algorithm: sha512
+            encode-as-base64: true
+            iterations: 10
+
+    providers:
+        user_db:
+            entity: { class: EnfermeriaBundle:Usuarios }
+
+    role_hierarchy:        
+        ROLE_USER: ROLE_ENFERMERA
+        ROLE_ADMIN:     ROLE_USER
+        ROLE_SUPER_ADMIN: [ ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+        
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        login:
+            pattern:  ^/login$
+            security: false
+
+        secured_area:
+            pattern:    ^/
+            form_login:
+                login_path: /login
+                check_path: /login_check
+            logout:
+                path: /logout
+                target: /login
+            anonymous: ~
+
+    access_control:
+      - { path: ^/portada, roles: ROLE_ENFERMERA }
+      - { path: ^/verificar, roles: ROLE_ENFERMERA }
+      - { path: ^/consultas, roles: ROLE_ENFERMERA }
+      - { path: ^/datos, roles: ROLE_ENFERMERA }
+      - { path: ^/signosvitalessuministrados, roles: ROLE_ENFERMERA}
+      - { path: ^/insumossuministrados, roles: ROLE_ENFERMERA }
+      - { path: ^/medicamentossuministrados, roles: ROLE_ENFERMERA}
+      - { path: ^/observacionessuministradas, roles: ROLE_ENFERMERA }
+      - { path: ^/pacientes, roles: ROLE_ENFERMERA }
+      
+      - { path: ^/especialidades, roles: ROLE_ADMIN }            
+      - { path: ^/insumos, roles: ROLE_ADMIN }      
+      - { path: ^/medicamentos, roles: ROLE_ADMIN }      
+      - { path: ^/personal, roles: ROLE_ADMIN }
+      - { path: ^/pfg, roles: ROLE_ADMIN }      
+      - { path: ^/tiposinsumo, roles: ROLE_ADMIN }
+      - { path: ^/tiposmedicamento, roles: ROLE_ADMIN }
+      
+      - { path: ^/usuarios, roles: ROLE_SUPER_ADMIN }
+      - { path: ^/roles, roles: ROLE_SUPER_ADMIN }
+      
+      - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+

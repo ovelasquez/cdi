@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+ {% block stylesheets %}
+    {{parent()}}
+    <!-- Bootstrap datepicker core CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/enfermeria/css/datepicker.css')}}"
+{% endblock %}
+
+{% block _body %}  <h2>Tipos Medicamentos</h2> {% endblock %}
+{% block body %}
+   
+    <h2>Registro</h2>
+    <br>
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        <div class="form-group">       
+            {{ form_label(form.nombre) }}
+            {{ form_errors(form.nombre) }}
+                <div class="col-lg-4">
+                    {{ form_widget(form.nombre) }}
+                </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-4">
+              <button type="submit" class="btn btn-primary">Registar</button>
+            </div>
+      </div>
+
+    {{ form_end(form) }}    
+
+        <ul class="table">
+    <li>
+        <a href="{{ path('tiposmedicamento') }}">
+            Regresar a la lista
+        </a>
+    </li>
+</ul>
+{% endblock %}
+

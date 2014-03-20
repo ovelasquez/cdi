@@ -1,0 +1,94 @@
+{% extends '::base.html.twig' %}
+
+ {% block stylesheets %}
+    {{parent()}}
+    <!-- Bootstrap datepicker core CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/enfermeria/css/datepicker.css')}}"
+{% endblock %}
+
+{% block _body %}  <h2>Medicamentos Suministrados</h2> {% endblock %}
+{% block body %}
+   
+    <h2>Registro</h2>
+    <br>
+    
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+ 
+    <div class="form-group">       
+        {{ form_label(form.medicamento) }}
+        {{ form_errors(form.medicamento) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.medicamento) }}
+            </div>
+    </div>
+       
+        
+     <div class="form-group">       
+        {{ form_label(form.cantidad) }}
+        {{ form_errors(form.cantidad) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.cantidad) }}
+            </div>
+    </div>
+    
+    
+        <div class="form-group">       
+        {{ form_label(form.viaAdministracion) }}
+        {{ form_errors(form.viaAdministracion) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.viaAdministracion) }}
+            </div>
+    </div>
+    
+        
+  {#    <div class="form-group">       
+        {{ form_label(form.fecha) }}
+        {{ form_errors(form.fecha) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.fecha) }}
+            </div>
+    </div>
+   #} 
+           
+     <div class="form-group">       
+        {{ form_label(form.consulta) }}
+        {{ form_errors(form.consulta) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.consulta) }}
+            </div>
+    </div>
+    
+    
+     {#<div class="form-group">       
+        {{ form_label(form.usuario) }}
+        {{ form_errors(form.usuario) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.usuario) }}
+            </div>
+    </div>#}
+     
+           
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-4">
+          <button type="submit" class="btn btn-primary">Registar</button>
+        </div>
+  </div>
+      
+{{ form_end(form) }} 
+    
+
+        <ul class="table">
+    <li>
+        <a href="{{ path('medicamentossuministrados') }}">
+            Regresar a la lista
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+    {% block javascripts %}
+
+
+ 
+{% endblock %}

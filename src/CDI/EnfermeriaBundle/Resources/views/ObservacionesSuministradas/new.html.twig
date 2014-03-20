@@ -1,0 +1,85 @@
+{% extends '::base.html.twig' %}
+
+ {% block stylesheets %}
+    {{parent()}}
+    <!-- Bootstrap datepicker core CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/enfermeria/css/datepicker.css')}}"
+{% endblock %}
+
+{% block _body %}  <h2>Observaciones Suministradas</h2> {% endblock %}
+{% block body %}
+   
+    <h2>Registro</h2>
+    <br>
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+ 
+    <div class="form-group">       
+        {{ form_label(form.tipo) }}
+        {{ form_errors(form.tipo) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.tipo) }}
+            </div>
+    </div>
+       
+        
+     <div class="form-group">       
+        {{ form_label(form.descripcion) }}
+        {{ form_errors(form.descripcion) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.descripcion) }}
+            </div>
+    </div>
+      
+        
+    {# <div class="form-group">       
+        {{ form_label(form.fecha) }}
+        {{ form_errors(form.fecha) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.fecha) }}
+            </div>
+    </div>#}
+    
+           
+     <div class="form-group">       
+        {{ form_label(form.consulta) }}
+        {{ form_errors(form.consulta) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.consulta) }}
+            </div>
+    </div>
+    
+    
+     {#<div class="form-group">       
+        {{ form_label(form.usuario) }}
+        {{ form_errors(form.usuario) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.usuario) }}
+            </div>
+    </div>
+     #}
+           
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-4">
+          <button type="submit" class="btn btn-primary">Registar</button>
+        </div>
+  </div>
+      
+{{ form_end(form) }} 
+    
+
+        <ul class="table">
+    <li>
+        <a href="{{ path('observacionessuministradas') }}">
+            Regresar a la lista
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+    {% block javascripts %}
+
+
+ 
+{% endblock %}

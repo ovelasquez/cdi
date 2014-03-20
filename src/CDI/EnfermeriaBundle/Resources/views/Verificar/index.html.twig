@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% block _body %}  <h2>Verificar</h2> {% endblock %}
+
+{% block body %}
+
+    <form action="{{ path('verificarone') }}" method="post">   
+        <div class="form-group">
+            <label class="col-lg-2 control-label required" for="pacientes"> Paciente </label>
+             <div class="col-lg-4">
+                    <input id="cedula" class="form-control" type="numer" placeholder="Indique número de Cédula de Identidad" required="required" name="cedula"></input>
+             </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-4">
+                <button class="btn btn-primary" type="submit"> Consultar </button>
+            </div>
+        </div>
+            </br>
+    </form>
+</br>
+{% endblock %}
+
+
+
+

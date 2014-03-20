@@ -1,0 +1,63 @@
+{% extends '::base.html.twig' %}
+
+ {% block stylesheets %}
+    {{parent()}}
+    <!-- Bootstrap datepicker core CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/enfermeria/css/datepicker.css')}}"
+{% endblock %}
+
+{% block _body %}  <h2>Roles</h2> {% endblock %}
+{% block body %}
+   
+    <h2>Registro</h2>
+    <br>
+    
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    
+    
+    
+    <div class="form-group">       
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.name) }}
+            </div>
+    </div>
+   
+   
+    <div class="form-group">       
+        {{ form_label(form.role) }}
+        {{ form_errors(form.role) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.role) }}
+            </div>
+    </div>
+   
+   
+    <div class="form-group">       
+        {{ form_label(form.users) }}
+        {{ form_errors(form.users) }}
+            <div class="col-lg-4">
+                {{ form_widget(form.users) }}
+            </div>
+    </div>
+
+           
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-4">
+          <button type="submit" class="btn btn-primary">Registar</button>
+        </div>
+  </div>
+      
+{{ form_end(form) }} 
+    
+
+        <ul class="table">
+    <li>
+        <a href="{{ path('roles') }}">
+            Regresar a la lista
+        </a>
+    </li>
+</ul>
+{% endblock %}

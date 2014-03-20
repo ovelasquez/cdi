@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block _body %}  <h2>Insumos</h2> {% endblock %}
+
+{% block body %}
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Tipo de Insumo</th>
+                <th>Nombre del Insumo</th>
+                <th>Stock</th>
+                <th>Disponible</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('insumos_show', { 'id': entity.id }) }}">{{ loop.index }}</a></td>
+                <td>{{ entity.tipoInsumo | title }}</td>
+                <td>{{ entity.nombre | title }}</td>
+                <td>{{ entity.stock }}</td>
+                <td>{{ entity.disponible }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('insumos_show', { 'id': entity.id }) }}">Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('insumos_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('insumos_new') }}">
+                Crear nueva entidad
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

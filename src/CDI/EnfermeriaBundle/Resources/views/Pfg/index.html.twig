@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block _body %}  <h2>Programas de Formación de Grado</h2> {% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+                {% set cont = 0 %}
+            <tr>
+                <td><a href="{{ path('pfg_show', { 'id': entity.id }) }}">{{ loop.index }}</a></td>
+                <td>{{ entity.nombre | title }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('pfg_show', { 'id': entity.id }) }}">Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('pfg_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+            {% set cont = cont + 1 %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('pfg_new') }}">
+                Crear nueva entidad
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

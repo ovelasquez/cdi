@@ -1,0 +1,67 @@
+<?php
+
+namespace CDI\EnfermeriaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Personal
+ *
+ * @ORM\Table(name="personal")
+ * @ORM\Entity
+ */
+class Personal
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="personal_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="procedencia", type="string", length=255, nullable=false)
+     */
+    private $procedencia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=255, nullable=false)
+     */
+    private $tipo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sas", type="string", nullable=true)
+     */
+    private $sas;
+
+    /**
+     * @var \Datos
+     *
+     * @ORM\ManyToOne(targetEntity="Datos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="datos_id", referencedColumnName="id")
+     * })
+     */
+    private $datos;
+
+    /**
+     * @var \Especialidades
+     *
+     * @ORM\ManyToOne(targetEntity="Especialidades")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="especialidad_id", referencedColumnName="id")
+     * })
+     */
+    private $especialidad;
+
+
+}

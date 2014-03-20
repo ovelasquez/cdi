@@ -1,0 +1,57 @@
+<?php
+
+namespace CDI\EnfermeriaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Medicamentos
+ *
+ * @ORM\Table(name="medicamentos")
+ * @ORM\Entity
+ */
+class Medicamentos
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="medicamentos_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="principio_activo", type="string", length=255, nullable=false)
+     */
+    private $principioActivo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="stock", type="integer", nullable=false)
+     */
+    private $stock;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="disponible", type="integer", nullable=false)
+     */
+    private $disponible;
+
+    /**
+     * @var \TiposMedicamento
+     *
+     * @ORM\ManyToOne(targetEntity="TiposMedicamento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipo_medicamento_id", referencedColumnName="id")
+     * })
+     */
+    private $tipoMedicamento;
+
+
+}

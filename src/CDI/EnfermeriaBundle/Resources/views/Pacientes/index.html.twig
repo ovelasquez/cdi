@@ -1,0 +1,58 @@
+{% extends '::base.html.twig' %}
+
+{% block _body %}  <h2>Pacientes</h2> {% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Apellidos</th>
+                <th>Nombres</th>
+                <th>Cédula</th>
+                <th>Genero</th>
+                <th>Tipo</th>              
+                <th>Fecha Registro</th>                
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('pacientes_show', { 'id': entity.id }) }}">{{ loop.index }}</a></td>
+                <td>{{ entity.datos.apellidos | title }}</td>
+                <td>{{ entity.datos.nombres | title}}</td>
+                <td>{{ entity.datos.cedula }}</td>
+                <td>{{ entity.genero | title }}</td>
+                <td>{% if  entity.tipo %}
+                        {{ entity.tipo | title }} 
+                    {% else %}
+                        Externo 
+                    {% endif %}</td>
+                
+                <td>{% if entity.fechaRegistro %}{{ entity.fechaRegistro|date('d-m-Y H:i:s') }}{% endif %}</td>
+                
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('pacientes_show', { 'id': entity.id }) }}">Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('pacientes_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('pacientes_new') }}">
+                Crear una nueva Entidad
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

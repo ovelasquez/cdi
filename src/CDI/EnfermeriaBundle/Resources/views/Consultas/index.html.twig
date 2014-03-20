@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block _body %}  <h2>Consultas</h2> {% endblock %}
+
+{% block body %}
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Paciente</th>
+                <th>Charla</th>
+                <th>Fecha de Consulta</th>
+                <th>Egreso?</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('consultas_show', { 'id': entity.id }) }}">{{ loop.index }}</a></td>
+                <td>{{ entity.paciente  | title }}</td>
+                <td>{% if entity.charla==1 %}{{ "Si" }}{% else %}{{ "No" }}{% endif %}</td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.egreso==1 %}{{ "Si" }}{% else %}{{ "No" }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('consultas_show', { 'id': entity.id }) }}">Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('consultas_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('consultas_new') }}">Crear una nueva entidad</a>
+        </li>
+    </ul>
+    {% endblock %}

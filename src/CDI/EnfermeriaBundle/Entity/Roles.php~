@@ -1,0 +1,48 @@
+<?php
+
+namespace CDI\EnfermeriaBundle\Entity;
+
+use Symfony\Component\Security\Core\Role\RoleInterface;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CDI\EnfermeriaBundle\Entity\Roles
+ * @ORM\Table(name="roles")
+ * @ORM\Entity
+ * @ORM\Entity(repositoryClass="CDI\EnfermeriaBundle\Entity\UsuariosRepository")
+ */
+class Roles implements RoleInterface
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="roles_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string $nombre
+     *
+     * @ORM\Column(name="nombre", type="string", length=45, nullable=true)
+     */
+    private $nombre;
+
+    /**
+     * @var string $descripcion
+     *
+     * @ORM\Column(name="descripcion", type="string", length=100, nullable=true)
+     */
+    private $descripcion;
+
+    
+    public function __toString() {
+        return $this->getRole();
+    }
+
+    public function getRole() {
+        
+    }
+}

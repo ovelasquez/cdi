@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block _body %}  <h2>Signos Vitales Suministrados</h2> {% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Valor</th>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('signosvitalessuministrados_show', { 'id': entity.id }) }}">{{ loop.index }}</a></td>
+                <td>{{ entity.valor }}</td>
+                <td>{{ entity.nombre | title }}</td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('signosvitalessuministrados_show', { 'id': entity.id }) }}">Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('signosvitalessuministrados_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('signosvitalessuministrados_new') }}">
+               Crear nueva entidad
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

@@ -1,0 +1,28 @@
+verificar:
+  pattern: /verificar
+  defaults: {_controller: EnfermeriaBundle:Verificar:index}
+
+verificarone:
+  pattern: /verificarone
+  defaults: {_controller: EnfermeriaBundle:Verificar:create}
+
+
+enfermeria:
+    resource: "@EnfermeriaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    
+portada:
+  pattern: /
+  defaults: {_controller: EnfermeriaBundle:Portada:index}
+  
+login:
+  pattern: /login
+  defaults: {_controller: EnfermeriaBundle:Seguridad:login}
+
+login_check:
+  pattern: /login_check
+
+logout:
+  pattern: /logout
+  

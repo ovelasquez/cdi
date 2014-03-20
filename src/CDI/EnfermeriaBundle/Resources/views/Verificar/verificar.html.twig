@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+
+ {% block stylesheets %}
+    {{parent()}}
+
+   
+{% endblock %}
+
+{% block _body %}  <h1>Pacientes</h1> {% endblock %}
+          
+{% block body %}
+    <h2>Verificar</h2>
+    <br>
+  <form action="{{ path('verificar_') }}" method="post">
+        <div class="control-group">       
+            <label for="pacientes[]">Paciente:</label>
+
+                <div class="controls">
+                    <input type="text" id="id" name="cedula[]"  />
+                </div>
+        </div>
+
+         </br>
+
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-4">
+              <button type="submit" class="btn btn-primary">Verificar</button>
+            </div>
+        </div>
+    </form>
+    
+        <ul class="table">
+    <li>
+        <a href="{{ path('pacientes') }}">
+            Regresar a la lista
+        </a>
+    </li>
+</ul>
+{% endblock %}
+    

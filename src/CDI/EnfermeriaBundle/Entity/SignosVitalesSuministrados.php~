@@ -1,0 +1,67 @@
+<?php
+
+namespace CDI\EnfermeriaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SignosVitalesSuministrados
+ *
+ * @ORM\Table(name="signos_vitales_suministrados")
+ * @ORM\Entity
+ */
+class SignosVitalesSuministrados
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="signos_vitales_suministrados_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valor", type="string", length=255, nullable=false)
+     */
+    private $valor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="datetime", nullable=false)
+     */
+    private $fecha;
+
+    /**
+     * @var \Consultas
+     *
+     * @ORM\ManyToOne(targetEntity="Consultas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="consulta_id", referencedColumnName="id")
+     * })
+     */
+    private $consulta;
+
+    /**
+     * @var \Usuarios
+     *
+     * @ORM\ManyToOne(targetEntity="Usuarios")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+
+}

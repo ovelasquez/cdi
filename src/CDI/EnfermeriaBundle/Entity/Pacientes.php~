@@ -1,0 +1,88 @@
+<?php
+
+namespace CDI\EnfermeriaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Pacientes
+ *
+ * @ORM\Table(name="pacientes")
+ * @ORM\Entity
+ */
+class Pacientes
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="pacientes_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="genero", type="string", length=255, nullable=false)
+     */
+    private $genero;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=255, nullable=true)
+     */
+    private $tipo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_nacimiento", type="date", nullable=false)
+     */
+    private $fechaNacimiento;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_registro", type="datetime", nullable=false)
+     */
+    private $fechaRegistro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="procedencia", type="string", length=255, nullable=false)
+     */
+    private $procedencia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="referencia", type="string", length=255, nullable=false)
+     */
+    private $referencia;
+
+    /**
+     * @var \Datos
+     *
+     * @ORM\ManyToOne(targetEntity="Datos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="datos_id", referencedColumnName="id")
+     * })
+     */
+    private $datos;
+
+    /**
+     * @var \Pfg
+     *
+     * @ORM\ManyToOne(targetEntity="Pfg")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pfg_id", referencedColumnName="id")
+     * })
+     */
+    private $pfg;
+
+
+}
